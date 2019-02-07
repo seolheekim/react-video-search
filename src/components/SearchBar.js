@@ -1,11 +1,11 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  state = { search: '' };
+  state = { term: '' }; search
 
   //remember to assign as an arrow function when it is a callback that is going to pass to some child element.
   handleInputChange = (event) => {
-    this.setState({ search : event.target.value })
+    this.setState({ term : event.target.value })
   };
 
   handleFormSubmit = (event ) => {
@@ -13,6 +13,7 @@ class SearchBar extends React.Component {
     event.preventDefault()
 
     //TODO: Make sure to call callback from parent component
+    this.props.handleSearchSubmit(this.state.term)
   };
 
   render() {
@@ -23,7 +24,7 @@ class SearchBar extends React.Component {
             <label>Video Search</label>
             <input
               type="text"
-              value={this.state.search}
+              value={this.state.term}
               onChange = { this.handleInputChange }
             />
           </div>
